@@ -2,18 +2,21 @@ package org.example;
 
 public class Person {
     // Variables
-    int personId;
-    String personName;
-    int age;
+    private int personId;
+    private String personName;
+    private int age;
 
     // Constructor
+    public Person() {
+    }
+
     public Person(int personId, String personName, int age) {
         this.personId = personId;
         this.personName = personName;
         this.age = age;
     }
 
-    // Getters & Setters 
+    // Getters & Setters
     public int getPersonId() {
         return personId;
     }
