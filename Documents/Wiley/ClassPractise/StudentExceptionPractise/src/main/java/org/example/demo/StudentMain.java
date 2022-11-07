@@ -39,6 +39,8 @@ public class StudentMain {
             System.out.println(exception.getMessage());
         } catch (RollNoException e) {
             System.out.println(e.getMessage());;
+        } catch (Exception e) {
+            System.out.println("Something went wrong, please try again!");
         }
     }
 }
