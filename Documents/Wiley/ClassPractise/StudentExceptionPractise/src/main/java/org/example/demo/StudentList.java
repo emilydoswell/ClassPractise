@@ -1,5 +1,7 @@
 package org.example.demo;
 
+import org.example.exceptions.RollNoException;
+
 public class StudentList {
     // Generate array
     private Student[] studentList;
@@ -10,7 +12,13 @@ public class StudentList {
         studentList = new Student[numberPeople];
     }
 
-    public void input(Student student, int i) {
+    public void input(Student student, int i) throws RollNoException {
+        // Check for duplicate RollNo before entering new Student
+        for (int index = 0; index < i; index++) {
+            if (studentList[index].getRollNo() == student.getRollNo()) {
+                throw new RollNoException("Duplicate Roll Number Entered");
+            }
+        }
         studentList[i] = student;
     }
 

@@ -52,8 +52,10 @@ public class Student {
     public void setAge(int age) throws AgeException {
         if (age < 0) {
             throw new AgeException("You can't be a negative age.");
+        } else if (age > 100) {
+            throw new AgeException("You can't be older than 100.");
         } else if (age < 4 || age > 18) {
-            throw new AgeException("Please enter an age between 4 - 18");
+            throw new AgeException("Please enter an age between 4 - 18.");
         }
         this.age = age;
     }

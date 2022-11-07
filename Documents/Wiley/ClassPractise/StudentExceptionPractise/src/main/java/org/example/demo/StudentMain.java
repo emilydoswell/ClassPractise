@@ -1,6 +1,7 @@
 package org.example.demo;
 
 import org.example.exceptions.AgeException;
+import org.example.exceptions.RollNoException;
 
 import java.util.Scanner;
 
@@ -34,13 +35,10 @@ public class StudentMain {
                 studentList.input(student, i);
             }
             studentList.display(numberPeople);
-        } catch(AgeException exception) {
-            System.out.println("Please enter an age above 0");
+        } catch (AgeException exception) {
+            System.out.println(exception.getMessage());
+        } catch (RollNoException e) {
+            System.out.println(e.getMessage());;
         }
     }
 }
-
-
-// Whats left to do?
-// Raise a custom defined exception when the user enters a student rollNo that has been already entered
-// one more exception if the marks is negative or greater than 100.
