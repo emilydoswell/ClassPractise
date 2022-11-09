@@ -20,6 +20,11 @@ public class EmployeeDaoImpl implements EmployeeDao {
     public Employee insertRecord(Employee employee) {
         return EmployeeDataBase.getEmployeeList().put(employee.getEmpId(), employee);
     }
+
+    @Override
+    public Employee deleteRecord(int id) {
+        return EmployeeDataBase.getEmployeeList().remove(id);
+    }
 }
 
 // EmployeeDataBase.getEmployeeList() is all static, therefore we don't need to

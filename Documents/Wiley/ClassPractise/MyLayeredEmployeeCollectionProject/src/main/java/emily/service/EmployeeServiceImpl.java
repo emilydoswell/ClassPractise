@@ -32,12 +32,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     @Override
     public boolean deleteEmployee(int id) {
-
+        Employee emp = employeeDao.deleteRecord(id);
+        if (emp != null) {
+            return true;
+        }
         return false;
     }
 
+    /*
+     * Business Rule
+     * AllowancesA : 18% of salary
+     * AllowanceB : 12% of salary
+     * Deduction : 8% of salary
+     */
+
     @Override
     public boolean incrementSalary(int id, double increment) {
+
         return false;
     }
 }

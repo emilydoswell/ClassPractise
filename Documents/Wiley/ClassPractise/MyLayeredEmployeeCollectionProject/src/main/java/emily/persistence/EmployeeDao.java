@@ -12,6 +12,9 @@ public interface EmployeeDao {
     // Search for employees using their id
     Employee searchRecord(int id);
 
-    // Insert a new employee
+    // Insert a new employee from the database
     Employee insertRecord(Employee employee);
+
+    // Delete an employee from the database
+    Employee deleteRecord(int id);
 }
