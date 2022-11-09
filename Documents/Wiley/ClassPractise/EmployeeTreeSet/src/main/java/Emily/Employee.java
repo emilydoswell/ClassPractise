@@ -22,7 +22,7 @@ public class Employee implements Comparable<Employee> {
             return 1;
         } else if (yrsExp < employee2.yrsExp) {
             return -1;
-        } else if (yrsExp == employee2.yrsExp) {
+        } else if (this.equals(employee2)) {
             return 0;
         }
         return 1;

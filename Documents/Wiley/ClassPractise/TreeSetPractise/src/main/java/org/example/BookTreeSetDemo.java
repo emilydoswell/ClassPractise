@@ -21,7 +21,7 @@ public class BookTreeSetDemo {
         System.out.println("Size : "+myCollection.size());
         System.out.println(myCollection);
 
-        myCollection.add(new Book(101, "Book 1", "Author A", 450, 1200));
+        myCollection.add(new Book(101, "Book 1", "Author B", 450, 1200));
         myCollection.add(new Book(102, "Book 6", "Author X", 4150, 1900));
 
         System.out.println("Size : "+myCollection.size());
