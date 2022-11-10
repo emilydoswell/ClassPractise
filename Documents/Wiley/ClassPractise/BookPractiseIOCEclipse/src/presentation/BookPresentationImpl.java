@@ -51,14 +51,14 @@ public class BookPresentationImpl implements BookPresentation {
 			System.out.println("Enter Book name : ");
 			newBook.setBookName(scanner.next());
 			System.out.println("Enter Author name : ");
-			newBook.setBookName(scanner.next());
+			newBook.setAuthorName(scanner.next());
 			System.out.println("Enter Number of copies : ");
-			newBook.setBookId(scanner.nextInt());
+			newBook.setNoOfCopies(scanner.nextInt());
 			
-//			if(employeeService.addEmployee(newEmployee))
-//				System.out.println("Employee Record Added");
-//			else
-//				System.out.println("Employee with id "+newEmployee.getEmpId()+" already exist, so cannot add it as a new employee!");
+			if(bookService.addBook(newBook))
+				System.out.println("Employee Record Added");
+			else
+				System.out.println("Employee with id "+newBook.getBookId()+" already exist, so cannot add it as a new employee!");
 			
 			break;
 		}
