@@ -11,14 +11,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class EmployeePresentationImpl implements EmployeePresentation {
-    // Presentation will pass the request to service for processing and gives response to client
-    // private EmployeeService employeeService=new EmployeeServiceImpl();
-
-    private EmployeeService employeeService;
-
-    public void setEmployeeService(EmployeeService employeeService) {
-        this.employeeService = employeeService;
-    }
+    //Presentation will pass the request to service for processing and gives response to client
+    private EmployeeService employeeService=new EmployeeServiceImpl();
 
     @Override
     public void showMenu() {

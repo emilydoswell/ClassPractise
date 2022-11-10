@@ -10,15 +10,8 @@ import java.util.Collection;
 import java.util.List;
 
 public class EmployeeServiceImpl implements EmployeeService {
-    // Service will request persistence layer for all data needs
-    // private EmployeeDao employeeDao=new EmployeeDaoImpl();
-
-    private EmployeeDao employeeDao;
-
-    public EmployeeServiceImpl(EmployeeDao employeeDao) {
-        super();
-        this.employeeDao = employeeDao;
-    }
+    //Service will request persistence layer for all data needs
+    private EmployeeDao employeeDao=new EmployeeDaoImpl();
 
     @Override
     public Collection<Employee> getAllEmployees() {
