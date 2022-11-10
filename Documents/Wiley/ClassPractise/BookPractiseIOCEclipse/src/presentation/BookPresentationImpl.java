@@ -10,8 +10,15 @@ import service.BookServiceImpl;
 
 public class BookPresentationImpl implements BookPresentation {
 	
-	BookService bookService = new BookServiceImpl();
+//	BookService bookService = new BookServiceImpl();
 
+	private BookService bookService;
+	
+	
+	public void setBookService(BookService bookService) {
+		this.bookService = bookService;
+	}
+	
 	@Override
 	public void showMenu() {
 		System.out.println("===========================");

@@ -9,14 +9,16 @@ import persistence.BookDaoImpl;
 
 public class BookServiceImpl implements BookService {
 	
-	  private BookDao bookDao=new BookDaoImpl();
+//	  private BookDao bookDao=new BookDaoImpl();
 	
-//	private BookDao bookDao;
-	
-	public BookServiceImpl() {
+	private BookDao bookDao;
+		
+		
+	public BookServiceImpl(BookDao bookDao) {
 		super();
 		this.bookDao = bookDao;
 	}
+
 	
 	@Override
 	public Collection<Book> getAllBooks() {
