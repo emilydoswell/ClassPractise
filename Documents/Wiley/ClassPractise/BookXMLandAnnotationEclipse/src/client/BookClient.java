@@ -19,14 +19,9 @@ public class BookClient {
 		
 //		BookPresentation bookPresentation=new BookPresentationImpl();
 		
-		
-		// Java file config
-		AnnotationConfigApplicationContext springContainer = new AnnotationConfigApplicationContext(BookConfiguration.class);
-		BookPresentation bookPresentation = (BookPresentation)springContainer.getBean("bookPresentation");
-		
 		// XML
-//		ApplicationContext springContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
-//		BookPresentation bookPresentation=(BookPresentation)springContainer.getBean("bookPresentation");
+		ApplicationContext springContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
+		BookPresentation bookPresentation=(BookPresentation)springContainer.getBean("bookPresentation");
 		
 		
 		while(true) {
