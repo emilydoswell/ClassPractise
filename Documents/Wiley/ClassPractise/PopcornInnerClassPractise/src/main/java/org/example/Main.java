@@ -6,12 +6,17 @@ public class Main {
 
         popCornStore.buy(new SaltedPopCorn());
 
-        popCornStore.buy(new PopCorn() {
-            @Override
-            public void pop() {
-                System.out.println("Salted Caramel PopCorn Popping");
-            }
-        });
+        // We can convert this chunk of code (anonymous inner class) :
+
+//        popCornStore.buy(new PopCorn() {
+//            @Override
+//            public void pop() {
+//                System.out.println("Salted Caramel PopCorn Popping");
+//            }
+//        });
+
+        // Into this gorgeous streamline (lambda)
+        popCornStore.buy(()->System.out.println("Salted Caramel PopCorn Popping"));
 
         PopCorn p1 = new PopCorn() {
             @Override
