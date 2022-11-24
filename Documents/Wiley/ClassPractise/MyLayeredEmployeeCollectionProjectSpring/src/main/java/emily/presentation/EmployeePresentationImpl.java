@@ -4,15 +4,22 @@ import emily.entity.Employee;
 import emily.entity.EmployeePaySlip;
 import emily.service.EmployeeService;
 import emily.service.EmployeeServiceImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Scanner;
 
+@Component("presentation")
 public class EmployeePresentationImpl implements EmployeePresentation {
-    //Presentation will pass the request to service for processing and gives response to client
-    private EmployeeService employeeService=new EmployeeServiceImpl();
+    private EmployeeService employeeService;
+
+    @Autowired
+    public void setEmployeeService(EmployeeService employeeService) {
+        this.employeeService = employeeService;
+    }
 
     @Override
     public void showMenu() {

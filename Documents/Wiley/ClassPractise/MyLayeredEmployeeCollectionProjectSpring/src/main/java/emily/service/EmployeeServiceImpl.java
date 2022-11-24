@@ -4,14 +4,23 @@ import emily.entity.Employee;
 import emily.entity.EmployeePaySlip;
 import emily.persistence.EmployeeDao;
 import emily.persistence.EmployeeDaoImpl;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+@Component("service")
 public class EmployeeServiceImpl implements EmployeeService {
     //Service will request persistence layer for all data needs
-    private EmployeeDao employeeDao=new EmployeeDaoImpl();
+    private EmployeeDao employeeDao;
+
+    public EmployeeServiceImpl(@Autowired EmployeeDao employeeDao) {
+        super();
+        this.employeeDao = employeeDao;
+    }
+
 
     @Override
     public Collection<Employee> getAllEmployees() {

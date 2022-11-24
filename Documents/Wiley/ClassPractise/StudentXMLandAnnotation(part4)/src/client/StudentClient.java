@@ -19,7 +19,8 @@ public class StudentClient {
 		
 //		BookPresentation bookPresentation=new BookPresentationImpl();
 		
-		// XML
+		// Convert to Spring
+		// Insert the XML document
 		ApplicationContext springContainer = new ClassPathXmlApplicationContext("applicationContext.xml");
 		StudentPresentation studentPresentation=(StudentPresentation)springContainer.getBean("studentPresentation");
 		

@@ -10,7 +10,7 @@ public enum Dish {
     private boolean vegetarian;
     private int price;
 
-    Dish(int calories, boolean vegetarian, int price) {
+    private Dish(int calories, boolean vegetarian, int price) {
         this.calories = calories;
         this.vegetarian = vegetarian;
         this.price = price;
