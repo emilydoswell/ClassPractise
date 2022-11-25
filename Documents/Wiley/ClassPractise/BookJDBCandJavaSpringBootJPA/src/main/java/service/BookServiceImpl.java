@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public Book searchBookById(int id) {
-		return bookDao.findAllById(id).orElse(null);
+		return bookDao.findById(id).orElse(null);
 	}
 	
 	@Override
@@ -44,7 +44,7 @@ public class BookServiceImpl implements BookService {
 	
 	@Override
 	public boolean deleteBook(int id) {
-		if (searchBookById(book.getBookId()) != null) {
+		if (searchBookById(id) != null) {
 			bookDao.deleteById(id);
 			return true;
 		}
