@@ -1,6 +1,7 @@
 package service;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,11 @@ public class BookServiceImpl implements BookService {
 		
 		// if bookDao.deleteRecord(id) returns 0, then the value has not been deleted. 
 		// bookDao.deleteRecord(id) function returns an integer.
+	}
+
+
+	@Override
+	public List<Book> getByNoOfCopies(int copies) {
+		return bookDao.getByNoOfCopies(copies);
 	}
 }
