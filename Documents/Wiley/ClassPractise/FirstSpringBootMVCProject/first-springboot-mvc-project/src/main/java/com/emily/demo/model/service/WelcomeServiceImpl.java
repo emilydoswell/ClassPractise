@@ -8,13 +8,13 @@ public class WelcomeServiceImpl implements WelcomeService {
 	@Override
 	public String welcome() {
 		System.out.println("Good Morning");
-		return "welcome";
+		return "Good Morning";
 	}
 
 	@Override
 	public String exit() {
 		System.out.println("Good Evening");
-		return "evening";
+		return "Good Evening";
 	}
 
 }

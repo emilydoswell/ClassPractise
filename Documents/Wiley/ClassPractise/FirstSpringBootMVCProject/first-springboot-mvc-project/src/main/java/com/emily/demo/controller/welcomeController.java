@@ -19,7 +19,7 @@ public class welcomeController {
 		ModelAndView modelAndView = new ModelAndView();
 		String greetMessage = welcomeService.welcome();
 		
-		modelAndView.addObject("morning", greetMessage);
+		modelAndView.addObject("message", greetMessage);
 		
 		modelAndView.setViewName("Greet");
 		return modelAndView;
@@ -31,7 +31,7 @@ public class welcomeController {
 		ModelAndView modelAndView = new ModelAndView();
 		String greetMessage = welcomeService.exit();
 		
-		modelAndView.addObject("evening", greetMessage);
+		modelAndView.addObject("message", greetMessage);
 		
 		modelAndView.setViewName("Greet");
 		return modelAndView;
