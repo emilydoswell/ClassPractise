@@ -23,4 +23,6 @@ public interface EmployeeService {
 	List<Employee> getEmployeesByDepartment(String deptt);
 
 	List<Employee> findByEmpSalaryGreaterThan(double salary);
+
+	List<Employee> countDistinctByEmpDepartment();
 }

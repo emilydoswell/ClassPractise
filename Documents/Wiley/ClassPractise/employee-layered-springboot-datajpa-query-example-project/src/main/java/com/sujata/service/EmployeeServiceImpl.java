@@ -91,4 +91,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 		return employeeDao.findByEmpSalaryGreaterThan(salary);
 	}
 
+	@Override
+	public List<Employee> countDistinctByEmpDepartment() {
+		return employeeDao.countDistinctByEmpDepartment();
+	}
+
 }

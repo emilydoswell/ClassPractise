@@ -14,4 +14,6 @@ public interface EmployeeDao extends JpaRepository<Employee, Integer> {
 	List<Employee> findByEmpDepartment(String department);
 
 	List<Employee> findByEmpSalaryGreaterThan(double salary);
+
+	List<Employee> countDistinctByEmpDepartment();
 }

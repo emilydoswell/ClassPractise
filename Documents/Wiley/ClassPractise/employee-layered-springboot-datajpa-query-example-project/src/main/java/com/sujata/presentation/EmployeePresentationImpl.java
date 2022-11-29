@@ -33,7 +33,8 @@ public class EmployeePresentationImpl implements EmployeePresentation {
 		System.out.println("6. Generate PaySlip");
 		System.out.println("7. Search Employees By Department");
 		System.out.println("8. Search Employees with salaries greater than 50,000");
-		System.out.println("9. Exit");
+		System.out.println("9. Number of Departments");
+		System.out.println("10. Exit");
 		System.out.println("============================");
 
 	}
@@ -126,8 +127,15 @@ public class EmployeePresentationImpl implements EmployeePresentation {
 			for(Employee e : salariesList) {
 				System.out.println(e);
 			}
-
 		case 9:
+			List<Employee> distinctDepartmentWiseEmpList = employeeService.countDistinctByEmpDepartment();
+			if (distinctDepartmentWiseEmpList.size() > 0) {
+				System.out.println(distinctDepartmentWiseEmpList.size());
+			} else {
+				System.out.println("No Departments found");
+			}
+
+		case 10:
 			System.out.println("Thanks for using Employee Management System");
 			System.exit(0);
 		default:
