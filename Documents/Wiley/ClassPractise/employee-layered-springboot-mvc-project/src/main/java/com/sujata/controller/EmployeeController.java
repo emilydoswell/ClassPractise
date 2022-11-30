@@ -109,7 +109,18 @@ public class EmployeeController {
 	public ModelAndView searchEmployeeByIDController(HttpServletRequest request) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		employeeService.searchEmployeeById(Integer.parseInt(request.getParameter("empID")));
+		Employee newEmp = employeeService.searchEmployeeById(Integer.parseInt(request.getParameter("empID")));
+		
+		String message = null;
+		
+		if (newEmp != null) {
+			message = "Employee found. ID: " + newEmp.getEmpId() + " Name: " + newEmp.getEmpName() + " Department: " + newEmp.getEmpDepartment();
+		} else {
+			message = "Employee with ID: " + newEmp.getEmpId() + " not found";
+		}
+		
+		modelAndView.addObject("message", message);
+		modelAndView.setViewName("Output");
 		
 		return modelAndView;
 	}
