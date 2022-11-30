@@ -1,5 +1,7 @@
 package com.sujata.controller;
 
+import java.util.Collection;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.sujata.entity.Employee;
 import com.sujata.model.service.EmployeeService;
 
 @Controller
@@ -19,6 +22,9 @@ public class EmployeeController {
 	public ModelAndView menuPageController() {
 		return new ModelAndView("index");
 	}
+	
+	//==================DELETE=EMPLOYEE=================================//
+	
 	@RequestMapping("/deleteEmpPage")
 	public ModelAndView deletePageController() {
 		return new ModelAndView("InputIdForDelete");
@@ -39,7 +45,9 @@ public class EmployeeController {
 		
 		return modelAndView;
 	}
+	//=================================================================//
 	
+	//==============INCREMENT=SALARY===================================//
 	@RequestMapping("/incrementSalaryPage")
 	public ModelAndView incrementSalaryPageController() {
 		return new ModelAndView("InputSalaryForIncrement");
@@ -67,6 +75,24 @@ public class EmployeeController {
 		
 		return modelAndView;
 	}
+	
+	//=================================================================//
+	
+	
+	//======================LIST=ALL===================================//
+	
+	@RequestMapping("/showAll")
+	public ModelAndView getAllEmployeesController() {
+		ModelAndView modelAndView = new ModelAndView();
+		Collection<Employee> empList = employeeService.getAllEmployees();
+		
+		modelAndView.addObject("employees", empList);
+		modelAndView.setViewName("ShowAllEmployees");
+		
+		return modelAndView;
+	}
+	
+	//=================================================================//
 }
 
 
