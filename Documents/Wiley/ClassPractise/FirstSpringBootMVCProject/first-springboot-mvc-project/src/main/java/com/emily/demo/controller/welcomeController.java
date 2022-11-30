@@ -13,19 +13,21 @@ public class welcomeController {
 	@Autowired
 	WelcomeService welcomeService;
 	
-	@RequestMapping("/first")
+	@RequestMapping("/morning")
 	public ModelAndView myFirstController() {
 		
 		ModelAndView modelAndView = new ModelAndView();
 		String greetMessage = welcomeService.welcome();
 		
+		// message is the string we input into the HTML
 		modelAndView.addObject("message", greetMessage);
 		
+		// name of HTML file
 		modelAndView.setViewName("Greet");
 		return modelAndView;
 	}
 	
-	@RequestMapping("/second")
+	@RequestMapping("/evening")
 	public ModelAndView mySecondController() {
 		
 		ModelAndView modelAndView = new ModelAndView();
