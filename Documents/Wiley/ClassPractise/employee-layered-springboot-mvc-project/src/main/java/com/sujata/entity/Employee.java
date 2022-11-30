@@ -24,8 +24,8 @@ public class Employee {
 	@Column(name = "employeeId")
 	private int empId;
 	
-	@Column(name="name")
-	private String empName;
+	@Column(name="doj")
+	private LocalDate dateOfJoining;
 	
 	@Column(name="designation")
 	private String empDesignation;
@@ -33,9 +33,10 @@ public class Employee {
 	@Column(name="department")
 	private String empDepartment;
 	
+	@Column(name="employeeName")
+	private String empName;
+	
 	@Column(name="salary")
 	private double empSalary;
 	
-	@Column(name="doj")
-	private LocalDate dateOfJoining;
 }

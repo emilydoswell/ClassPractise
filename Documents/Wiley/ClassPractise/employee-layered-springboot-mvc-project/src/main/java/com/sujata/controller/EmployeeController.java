@@ -100,11 +100,19 @@ public class EmployeeController {
 	
 	//=====================SEARCH=EMPLOYEE=BY=ID========================//
 	
-//	@Requestmapping("/searchEmployeeByIdPage")
-//	public ModelAndView searchEmployeeByIDController() {
-//		return new ModelAndView("InputIdForSearch");
-//	}
+	@RequestMapping("/searchEmpIdPage")
+	public ModelAndView searchEmployeeByIDPageController() {
+		return new ModelAndView("InputIdForSearch");
+	}
  	
+	@RequestMapping("/searchEmpId")
+	public ModelAndView searchEmployeeByIDController(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		employeeService.searchEmployeeById(Integer.parseInt(request.getParameter("empID")));
+		
+		return modelAndView;
+	}
 	
 	//=================================================================//
 	
@@ -128,7 +136,7 @@ public class EmployeeController {
 		double empSalary = Double.parseDouble(request.getParameter("empSalary"));
 		LocalDate empDateOfJoining = LocalDate.parse(request.getParameter("empDateOfJoining"));
 		
-		Employee newEmployee = new Employee(empId, empName, empDesignation, empDepartment, empSalary, empDateOfJoining);
+		Employee newEmployee = new Employee(empId, empDateOfJoining, empDesignation, empDepartment, empName, empSalary);
 		
 		boolean addEmployee = employeeService.addEmployee(newEmployee);
 		
@@ -147,6 +155,11 @@ public class EmployeeController {
 	
 	
 	//=================================================================//
+	
+	@RequestMapping("/searchEmpDesignationPage")
+	public ModelAndView searchEmpDesignationPageController() {
+		return new ModelAndView("InputDesignationForSearch");
+	}
 }
 
 

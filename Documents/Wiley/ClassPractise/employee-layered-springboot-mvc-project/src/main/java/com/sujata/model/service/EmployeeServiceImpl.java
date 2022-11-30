@@ -45,8 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Override
 	public boolean addEmployee(Employee employee) {
 	try{
-		employeeDao.insertEmployee(employee.getEmpId(), employee.getEmpName(), employee.getEmpDesignation(),
-				employee.getEmpDepartment(), employee.getEmpSalary(), employee.getDateOfJoining()) ;
+		employeeDao.insertEmployee(employee.getEmpId(), employee.getDateOfJoining(), employee.getEmpDesignation(),
+				employee.getEmpDepartment(), employee.getEmpName(), employee.getEmpSalary());
 		return true;
 	}
 	catch(SQLIntegrityConstraintViolationException ex) {

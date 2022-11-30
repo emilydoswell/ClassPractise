@@ -33,9 +33,9 @@ public interface EmployeeDao extends JpaRepository<Employee, Integer> {
 	//Native Query
 	@Modifying
 	@Transactional
-	@Query(value = "insert into employee values(:eid,:na,:des,:dep,:sal,:doj)", nativeQuery = true)
-	int insertEmployee(@Param("eid") int id, @Param("na") String name, @Param("des") String desig,
-			@Param("dep") String deptt,@Param("sal") double sal,@Param("doj") LocalDate dateOfjoining)throws SQLIntegrityConstraintViolationException;
+	@Query(value = "insert into employee values(:eid,:doj,:des,:dep,:na,:sal)", nativeQuery = true)
+	int insertEmployee(@Param("eid") int id, @Param("doj") LocalDate dateOfjoining, @Param("des") String desig, @Param("dep") String deptt, @Param("na") String name, 
+			@Param("sal") double sal)throws SQLIntegrityConstraintViolationException;
 
 	
 	//JPQL
