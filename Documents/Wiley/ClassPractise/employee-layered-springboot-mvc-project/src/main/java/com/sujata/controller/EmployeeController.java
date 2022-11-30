@@ -1,5 +1,6 @@
 package com.sujata.controller;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 import javax.servlet.http.HttpServletRequest;
@@ -80,6 +81,7 @@ public class EmployeeController {
 	
 	
 	//======================LIST=ALL===================================//
+	// We only have one method here because we're not getting an input from the client
 	
 	@RequestMapping("/showAll")
 	public ModelAndView getAllEmployeesController() {
@@ -91,6 +93,58 @@ public class EmployeeController {
 		
 		return modelAndView;
 	}
+	
+	//=================================================================//
+	
+	
+	
+	//=====================SEARCH=EMPLOYEE=BY=ID========================//
+	
+//	@Requestmapping("/searchEmployeeByIdPage")
+//	public ModelAndView searchEmployeeByIDController() {
+//		return new ModelAndView("InputIdForSearch");
+//	}
+ 	
+	
+	//=================================================================//
+	
+	
+	
+	//===========================ADD=NEW=EMPLOYEE======================//
+	@RequestMapping("/addEmployeePage")
+	public ModelAndView addEmployeePageController() {
+		return new ModelAndView("InputForAddEmployee");
+	}
+	
+	
+	@RequestMapping("/addEmployee")
+	public ModelAndView addEmployeeController(HttpServletRequest request) {
+		ModelAndView modelAndView = new ModelAndView();
+		
+		int empId = Integer.parseInt(request.getParameter("empId"));
+		String empName = request.getParameter("empName");
+		String empDesignation = request.getParameter("empDesignation");
+		String empDepartment = request.getParameter("empDepartment");
+		double empSalary = Double.parseDouble(request.getParameter("empSalary"));
+		LocalDate empDateOfJoining = LocalDate.parse(request.getParameter("empDateOfJoining"));
+		
+		Employee newEmployee = new Employee(empId, empName, empDesignation, empDepartment, empSalary, empDateOfJoining);
+		
+		boolean addEmployee = employeeService.addEmployee(newEmployee);
+		
+		String message = null;
+		
+		if (addEmployee)
+			message = "You have successfully added this employee";
+		else
+			message = "This employee was not added";
+		
+		modelAndView.addObject("message", message);
+		modelAndView.setViewName("Output");
+		
+		return modelAndView;
+	}
+	
 	
 	//=================================================================//
 }

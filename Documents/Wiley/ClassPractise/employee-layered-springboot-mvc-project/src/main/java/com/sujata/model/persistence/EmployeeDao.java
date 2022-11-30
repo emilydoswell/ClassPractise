@@ -2,7 +2,6 @@ package com.sujata.model.persistence;
 
 import java.sql.SQLIntegrityConstraintViolationException;
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 import javax.transaction.Transactional;
