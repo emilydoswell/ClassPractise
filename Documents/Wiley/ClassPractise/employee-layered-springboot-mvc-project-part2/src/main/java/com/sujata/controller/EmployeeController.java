@@ -134,7 +134,12 @@ public class EmployeeController {
 	//===========================ADD=NEW=EMPLOYEE======================//
 	@RequestMapping("/addEmployeePage")
 	public ModelAndView addEmployeePageController() {
-		return new ModelAndView("InputForAddEmployee");
+		//	return new ModelAndView("InputForAddEmployee");
+		
+		// first parameter - HTML file we're using
+		// second parameter - name of value in HTML
+		// third parameter - Object
+		return new ModelAndView("InputForAddEmployee", "emp", new Employee());
 	}
 	
 	
