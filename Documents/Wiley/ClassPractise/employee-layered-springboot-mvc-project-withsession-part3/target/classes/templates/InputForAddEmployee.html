@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Employee Management System</h1>
+	<h2>Add New Employee</h2>
+	
+	<form action="#" th:action="@{./addEmployee}" th:object="emp" method="post">
+		<!-- we've mapped empId from entity to this field (must be exact from entity) -->
+		Enter Employee ID: <input type="text" th:field="*{empId}"> <br><br>
+		Name: <input type="text" th:field="*{empName}"> <br><br>
+		Designation: <input type="text" th:field="*{empDesignation}"> <br><br>
+		Department: <input type="text" th:field="*{empDepartment}"> <br><br>
+		Salary: <input type="text" th:field="*{empSalary}"> <br><br>
+		Date of Joining <input type="date" th:field="*{dateOfJoining}"> <br><br>
+		<input type="submit" value="Submit">
+	</form>
+	
+	<!--  
+	<form action="./addEmployee">
+		ID: <input type="text" name="empId"> <br><br>
+		Name: <input type="text" name="empName"> <br><br>
+		Designation: <input type="text" name="empDesignation"> <br><br>
+		Department: <input type="text" name="empDepartment"> <br><br>
+		Salary: <input type="text" name="empSalary"> <br><br>
+		Date of Joining <input type="date" name="empDateOfJoining"> <br><br>
+		<input type="submit" value="Submit">
+	</form>
+	-->
+	<br><br>
+	<a href="./">Go Back to Menu Page</a>
+</body>
+</html>
