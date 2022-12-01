@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sujata.entity.Employee;
@@ -34,9 +36,12 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/deleteEmployee")
-	public ModelAndView deleteEmployeeController(HttpServletRequest request) {
+//	public ModelAndView deleteEmployeeController(HttpServletRequest request) {
+	public ModelAndView deleteEmployeeController(@RequestParam("empId") int eId) {
 		ModelAndView modelAndView=new ModelAndView();
-		int eId=Integer.parseInt(request.getParameter("empId"));
+		
+//		int eId=Integer.parseInt(request.getParameter("empId"));
+		
 		String message=null;
 		if(employeeService.deleteEmployee(eId))
 			message="Employee Deleted with ID "+eId;
@@ -108,10 +113,12 @@ public class EmployeeController {
 	}
  	
 	@RequestMapping("/searchEmpId")
-	public ModelAndView searchEmployeeByIDController(HttpServletRequest request) {
+	//	public ModelAndView searchEmployeeByIDController(HttpServletRequest request) {
+	public ModelAndView searchEmployeeByIDController(@RequestParam("empId") int id) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		Employee newEmp = employeeService.searchEmployeeById(Integer.parseInt(request.getParameter("empID")));
+//		Employee newEmp = employeeService.searchEmployeeById(Integer.parseInt(request.getParameter("empID")));
+		Employee newEmp = employeeService.searchEmployeeById(id);
 		
 		String message = null;
 		
@@ -143,20 +150,30 @@ public class EmployeeController {
 	}
 	
 	
+	
+	// @ModelAttribute is super clever, we don't have to use this bulky code!
+	// we insert "emp" to typecast over to the HTML page.
+	// Now we don't have to pick each field manually, (if we had 100 lines it would be crazy)
+	
+	// String cannot be converted to LocalDate by @ModelAttribute, so we do it seperately with request.getParameter
+	
 	@RequestMapping("/addEmployee")
-	public ModelAndView addEmployeeController(HttpServletRequest request) {
+	//	public ModelAndView addEmployeeController(HttpServletRequest request) {
+	public ModelAndView addEmployeeController(@ModelAttribute("emp") Employee employee, @RequestParam("doj") LocalDate date) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		int empId = Integer.parseInt(request.getParameter("empId"));
-		String empName = request.getParameter("empName");
-		String empDesignation = request.getParameter("empDesignation");
-		String empDepartment = request.getParameter("empDepartment");
-		double empSalary = Double.parseDouble(request.getParameter("empSalary"));
-		LocalDate empDateOfJoining = LocalDate.parse(request.getParameter("empDateOfJoining"));
+		//		int empId = Integer.parseInt(request.getParameter("empId"));
+		//		String empName = request.getParameter("empName");
+		//		String empDesignation = request.getParameter("empDesignation");
+		//		String empDepartment = request.getParameter("empDepartment");
+		//		double empSalary = Double.parseDouble(request.getParameter("empSalary"));
+		//		LocalDate empDateOfJoining = LocalDate.parse(request.getParameter("empDateOfJoining"));
 		
-		Employee newEmployee = new Employee(empId, empDateOfJoining, empDesignation, empDepartment, empName, empSalary);
+		//		Employee newEmployee = new Employee(empId, empDateOfJoining, empDesignation, empDepartment, empName, empSalary);
 		
-		boolean addEmployee = employeeService.addEmployee(newEmployee);
+		employee.setDateOfJoining(date);
+		
+		boolean addEmployee = employeeService.addEmployee(employee);
 		
 		String message = null;
 		
@@ -182,9 +199,12 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/searchEmpDesignation")
-	public ModelAndView searchEmpDesignationController(HttpServletRequest request) {
+//	public ModelAndView searchEmpDesignationController(HttpServletRequest request) {
+	public ModelAndView searchEmpDesignationController(@RequestParam("empDesignation") String designation) {
 		ModelAndView modelAndView = new ModelAndView();
-		List<Employee> empList = employeeService.searchByDesignation(request.getParameter("empDesignation"));
+		
+		//		List<Employee> empList = employeeService.searchByDesignation(request.getParameter("empDesignation"));
+		List<Employee> empList = employeeService.searchByDesignation(designation);
 		
 		modelAndView.addObject("employees", empList);
 		modelAndView.setViewName("ShowDesignations");
@@ -204,9 +224,12 @@ public class EmployeeController {
 	
 	
 	@RequestMapping("/generatePayslip")
-	public ModelAndView generatePaySlip(HttpServletRequest request) {	
+	//	public ModelAndView generatePaySlip(HttpServletRequest request) {	
+	public ModelAndView generatePaySlip(@RequestParam("empId") int id) {
 		ModelAndView modelAndView = new ModelAndView();
-		EmployeePaySlip newPaySlip = employeeService.generatePaySlip(Integer.parseInt(request.getParameter("empID")));
+
+		//	EmployeePaySlip newPaySlip = employeeService.generatePaySlip(Integer.parseInt(request.getParameter("empID")));
+		EmployeePaySlip newPaySlip = employeeService.generatePaySlip(id);
 		
 		String message = null;
 		
@@ -232,17 +255,20 @@ public class EmployeeController {
 	}
 	
 	@RequestMapping("/deleteEmpByName")
-	public ModelAndView deleteEmpByNameController(HttpServletRequest request) {
+	//	public ModelAndView deleteEmpByNameController(HttpServletRequest request) {
+	public ModelAndView deleteEmpByNameController(@RequestParam("empName") String name) {
 		ModelAndView modelAndView = new ModelAndView();
-		String empName = request.getParameter("empName");
-		boolean empDelete = employeeService.deleteEmployeeByName(empName);
+
+		//		String empName = request.getParameter("empName");
+		//		boolean empDelete = employeeService.deleteEmployeeByName(empName);
+		boolean empDelete = employeeService.deleteEmployeeByName(name);
 		
 		String message = null;
 		
 		if (empDelete)
-			message = "Employee " + empName + " successfully deleted.";
+			message = "Employee " + name + " successfully deleted.";
 		else 
-			message = "Employee " + empName + " not deleted.";
+			message = "Employee " + name + " not deleted.";
 		
 		modelAndView.addObject("message", message);
 		modelAndView.setViewName("Output");
@@ -262,10 +288,11 @@ public class EmployeeController {
 	
 	
 	@RequestMapping("/searchEmpDept")
-	public ModelAndView searchEmpByDeptController(HttpServletRequest request) {
-		ModelAndView modelAndView = new ModelAndView();
+	//	public ModelAndView searchEmpByDeptController(HttpServletRequest request) {
+	public ModelAndView searchEmpByDeptController(@RequestParam("empDept") String dept) {
+	ModelAndView modelAndView = new ModelAndView();
 		
-		List<Employee> empList = employeeService.getEmployeesByDepartment(request.getParameter("empDept"));
+		List<Employee> empList = employeeService.getEmployeesByDepartment(dept);
 	
 		modelAndView.addObject("employees", empList);
 		modelAndView.setViewName("ShowDesignations");
