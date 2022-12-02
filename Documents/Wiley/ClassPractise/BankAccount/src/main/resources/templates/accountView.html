@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="https://thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Bank of the Blondes</title>
+</head>
+<body>
+	<h1>Welcome to the Bank:</h1>
+	<h2>Account Details</h2>
+	
+	<table border="1">
+		<tr>
+			<th>Username</th>
+			<th>User Address</th>
+			<th>Phone Number</th>
+			<th>Balance</th>
+		</tr>
+		<tr th:each="account: ${account}">
+			<td th:text="${account.userName}"></td>
+			<td th:text="${account.userAddress}"></td>
+			<td th:text="${account.phoneNumber}"></td>
+			<td th:text="${account.bankBalance}"></td>
+		</tr>
+	</table>
+	<br><br>
+	<a href="./">Go Back to Menu Page</a>
+</body>
+</html>

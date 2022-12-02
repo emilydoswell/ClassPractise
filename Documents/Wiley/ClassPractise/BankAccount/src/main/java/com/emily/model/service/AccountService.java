@@ -6,6 +6,8 @@ public interface AccountService {
 	
 	public boolean loginCheck(Account account);
 	
-	boolean incrementBalance(int accountId, double increment);
+	public Account findByAccountId(int accountId);
+	
+//	boolean incrementBalance(int accountId, double increment);
 
 }

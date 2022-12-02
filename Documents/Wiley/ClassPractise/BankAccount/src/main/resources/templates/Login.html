@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Bank of the Blondes</title>
@@ -8,9 +8,12 @@
 	<h1>Welcome to the Bank:</h1>
 	<h2>Please Login</h2>
 	<br><br>
-	<form action="./menu">
-		Username: <input type="text" name="userName">
-		Password: <input type="text" name="passWord">
+	<form action="#" th:action="@{./login}" th:object="${account}">
+							
+							<!-- These inputs must match entity in order to be automated -->
+							<!-- th:field="*{}" -->
+		Account ID: <input type="text" th:field="*{accountId}">
+		Password: <input type="text" th:field="*{userPassword}">
 		<input type="submit" value="Submit">
 	</form>
 	<br><br>
