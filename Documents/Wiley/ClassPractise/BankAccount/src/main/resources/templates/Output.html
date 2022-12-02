@@ -5,7 +5,8 @@
 <title>Bank of the Blondes</title>
 </head>
 <body>
-	<h1>Welcome to the Bank:</h1>
+	<h1>PersonalBankingApp</h1>
+	<h2 th:text="'Welcome Back ' +${session.account.userName}"></h2>
 	<h2 th:text="${message}"></h2>
 	<br><br>
 	<a href="./">Go Back to Menu Page</a>

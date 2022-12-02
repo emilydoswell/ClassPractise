@@ -1,5 +1,7 @@
 package com.emily.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,12 +28,18 @@ public class AccountController {
 	
 	
 	@RequestMapping("/login")
-									// Passing in an Account object generated above
-	public ModelAndView loginController(@ModelAttribute("account") Account account) {
+									// Passing in an Account object generated above                                                                               <!-- so that we can use session -->
+	public ModelAndView loginController(@ModelAttribute("account") Account account, @RequestParam("accountId") int accountId, @RequestParam("userPassword") String userPassword, HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
+		
+		Account newAccount = new Account();
+		newAccount.setAccountId(accountId);
+		newAccount.setUserPassword(userPassword);
 		
 		// If the inputed id+password match an existing pair then....
 		if (service.loginCheck(account)) {
+			
+			session.setAttribute("account", newAccount);
 			
 			// Go to index page
 			modelAndView.setViewName("index");

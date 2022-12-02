@@ -17,9 +17,9 @@ public interface AccountDao extends JpaRepository<Account, String> {
 	public Account findByAccountId(int accountId);
 	
 	// DML so we must use @Modifying and @Transactional
-//	@Modifying
-//	@Transactional
-//	@Query("update BankAccount set bankBalance=bankBalance+:inc where accountId=:id")
-//	double updateBalance(@Param("accountId") int accountId, @Param("inc") double increment);
-	// These @Params will be taken from the HTML form when the user inputs the id and increment amount
+	@Modifying
+	@Transactional
+	@Query("update BankAccount set bankBalance=bankBalance+:inc where accountId=:id")
+	double updateBalance(@Param("accountId") int accountId, @Param("inc") double increment);
+//	// These @Params are taken from the @Query above
 }

@@ -8,6 +8,6 @@ public interface AccountService {
 	
 	public Account findByAccountId(int accountId);
 	
-//	boolean incrementBalance(int accountId, double increment);
+	boolean incrementBalance(int accountId, double increment);
 
 }

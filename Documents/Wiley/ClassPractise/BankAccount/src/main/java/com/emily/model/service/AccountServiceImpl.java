@@ -15,11 +15,15 @@ public class AccountServiceImpl implements AccountService {
 	// This is checking with the Dao that we have a user with this ID.
 	@Override
 	public boolean loginCheck(Account account) {
-		Account newAccount = dao.findByAccountIdAndUserPassword(account.getAccountId(), account.getUserPassword());
-		
-		if (newAccount != null)
-			return true;
-		
+		try {
+			Account newAccount = dao.findByAccountIdAndUserPassword(account.getAccountId(), account.getUserPassword());
+			
+			if (newAccount != null)
+				return true;
+			
+		} catch(Exception e) {
+			return false;
+		}
 		return false;
 	}
 
@@ -34,15 +38,25 @@ public class AccountServiceImpl implements AccountService {
 		return null;
 	}
 
-//	@Override
-//	public boolean incrementBalance(int accountId, double increment) {
-//		Account newAccount = dao.findByAccountId(accountId);
-//		
-//		if (dao.updateBalance(accountId, increment) > 0) {
-//			return true;
-//		}
-//		
-//		return false;
-//	}
+	@Override
+	public boolean incrementBalance(int accountId, double increment) {
+		// This is the account that we're changing (not our own account)
+		Account transferAccount = dao.findByAccountId(accountId);
+		
+		dao.updateBalance(accountId, increment);
+		
+		
+		double currentAmount = transferAccount.getBankBalance();
+		
+		if (currentAmount > increment) {
+			transferAccount.setBankBalance(currentAmount + increment);
+		}
+		
+		if (dao.updateBalance(accountId, increment) > 0) {
+			return true;
+		}
+		
+		return false;
+	}
 
 }

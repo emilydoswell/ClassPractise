@@ -8,7 +8,7 @@
 	<h1>Welcome to the Bank:</h1>
 	<h2>Please Login</h2>
 	<br><br>
-	<form action="#" th:action="@{./login}" th:object="${account}">
+	<form action="#" th:action="@{./login}" th:object="${account}" method="post">
 							
 							<!-- These inputs must match entity in order to be automated -->
 							<!-- th:field="*{}" -->
