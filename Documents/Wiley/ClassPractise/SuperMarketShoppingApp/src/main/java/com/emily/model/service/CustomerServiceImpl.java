@@ -13,16 +13,14 @@ public class CustomerServiceImpl implements CustomerService {
 	CustomerDao dao;
 
 	@Override
-	public boolean checkLogin(int customerId) {
+	public Customer checkLogin(int customerId, String password) {
 		// Find customer with inputed Id
-		Customer newCustomer = dao.searchById(customerId);
+		Customer newCustomer = dao.findUserByCustomerId(customerId);
 		
-		newCustomer.getCustomerPassword();
-		newCustomer.getCustomerId();
-		
-		// Now compare with inputed password and ID
-		
-		return false;
+		if (newCustomer != null) {
+			return newCustomer;
+		} 
+		return null;
 	}
 
 }

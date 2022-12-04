@@ -1,5 +1,7 @@
 package com.emily.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -11,12 +13,14 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-@Table(name = "Product Table")
+@Table(name = "Product")
+@Entity
 public class Product {
 
+	@Id
 	private int productId;
-	private String productName;
 	private double costPerUnit;
+	private String productName;
 	private int stock;
 	
 }

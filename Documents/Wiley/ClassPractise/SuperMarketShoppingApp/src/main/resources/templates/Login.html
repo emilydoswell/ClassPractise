@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="https://thymeleaf.org">
 <head>
 <meta charset="ISO-8859-1">
 <title>Shopping App</title>
@@ -7,9 +7,11 @@
 <body>
 	<h1>Login</h1>
 	
-	<form action="/login" method="POST">
-		Customer ID: <input type="text" >
-		Password: <input type="submit" value="Submit">
+	<form action="./login" method="POST">
+	
+		Customer ID: <input type="text" name="customerId">
+		Password: <input type="text" name="customerPassword">
+		<input type="submit" value="Submit">
 	</form>
 	
 </body>

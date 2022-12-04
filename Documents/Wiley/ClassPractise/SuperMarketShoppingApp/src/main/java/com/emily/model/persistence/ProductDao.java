@@ -1,15 +1,14 @@
 package com.emily.model.persistence;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.emily.entity.Customer;
+import com.emily.entity.Product;
 
 @Repository
-public interface CustomerDao extends JpaRepository<Customer, String> {
+public interface ProductDao extends JpaRepository<Product, String> {
 	
-	public Customer findUserByCustomerId(int customerId);
-	
-	
-
+	public List<Product> findAll();
 }
