@@ -20,6 +20,6 @@ public interface AccountDao extends JpaRepository<Account, String> {
 	@Modifying
 	@Transactional
 	@Query("update BankAccount set bankBalance=bankBalance+:inc where accountId=:id")
-	double updateBalance(@Param("accountId") int accountId, @Param("inc") double increment);
+	double updateBalance(@Param("accountId") int id, @Param("inc") double inc);
 //	// These @Params are taken from the @Query above
 }

@@ -78,6 +78,16 @@ public class AccountController {
 		
 		return modelAndView;
 	}
+	
+	@RequestMapping("/UpdateBalancePage")
+	public ModelAndView updateBalancePageController() {
+		return new ModelAndView("InputIdForTransfer");
+	}
+	
+	@RequestMapping("/UpdateBalance")
+	public ModelAndView updateBalanceController() {
+		
+	}
 
 }
 

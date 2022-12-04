@@ -42,21 +42,14 @@ public class AccountServiceImpl implements AccountService {
 	public boolean incrementBalance(int accountId, double increment) {
 		// This is the account that we're changing (not our own account)
 		Account transferAccount = dao.findByAccountId(accountId);
-		
-		dao.updateBalance(accountId, increment);
-		
-		
-		double currentAmount = transferAccount.getBankBalance();
-		
-		if (currentAmount > increment) {
-			transferAccount.setBankBalance(currentAmount + increment);
-		}
-		
-		if (dao.updateBalance(accountId, increment) > 0) {
+			
+		if (transferAccount != null) {
+			double currentBalance = transferAccount.getBankBalance();
+			dao.updateBalance(accountId, (currentBalance + increment));
 			return true;
+		} else {
+			return false;
 		}
-		
-		return false;
 	}
 
 }
