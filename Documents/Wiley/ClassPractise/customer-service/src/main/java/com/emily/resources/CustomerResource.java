@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.emily.entity.Customer;
+import com.emily.entity.CustomerList;
 import com.emily.model.service.CustomerService;
 
 @RestController
@@ -17,8 +18,8 @@ public class CustomerResource {
 	CustomerService service;
 	
 	@GetMapping(path = "/customers/{customerId}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Customer searchCustomerByCustomerIdResource(@PathVariable("customerId") int id) {
-		return service.findByCustomerId(id);
+	public CustomerList searchCustomerByCustomerIdResource(@PathVariable("customerId") int id) {
+		return new CustomerList(service.searchCustomerByCustomerId(id));
 		
 	}
 }

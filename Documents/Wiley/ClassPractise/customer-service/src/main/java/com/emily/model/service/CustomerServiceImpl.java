@@ -1,5 +1,7 @@
 package com.emily.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,8 +15,8 @@ public class CustomerServiceImpl implements CustomerService {
 	CustomerDao dao;
 
 	@Override
-	public Customer findByCustomerId(int customerId) {
-		return dao.findByCustomerId(customerId);
+	public List<Customer> searchCustomerByCustomerId(int customerId) {
+		return dao.searchCustomerByCustomerId(customerId);
 	}
 	
 	
