@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.emily.entity.Customer;
 
 @Repository
-public interface CustomerDao extends JpaRepository<Customer, String> {
+public interface CustomerDao extends JpaRepository<Customer, Integer> {
 	
 	public List<Customer> searchCustomerByCustomerId(int customerId);
 	
