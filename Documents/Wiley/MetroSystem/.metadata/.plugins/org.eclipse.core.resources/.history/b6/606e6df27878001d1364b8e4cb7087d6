@@ -1,0 +1,5 @@
+package com.emily.service;
+
+public class ClientServiceImpl implements ClientService {
+
+}

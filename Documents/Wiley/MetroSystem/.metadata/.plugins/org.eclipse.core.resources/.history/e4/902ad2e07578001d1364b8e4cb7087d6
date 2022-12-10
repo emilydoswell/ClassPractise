@@ -1,0 +1,5 @@
+package com.emily.entity;
+
+public class Customer {
+
+}

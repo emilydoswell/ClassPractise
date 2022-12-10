@@ -1,0 +1,6 @@
+package com.emily.controller;
+
+@Controller
+public class ClientController {
+
+}

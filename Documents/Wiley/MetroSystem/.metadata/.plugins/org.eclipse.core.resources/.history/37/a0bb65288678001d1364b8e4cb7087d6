@@ -1,0 +1,5 @@
+package com.maria.service;
+
+public class CustomerServiceImpl implements CustomerService {
+
+}

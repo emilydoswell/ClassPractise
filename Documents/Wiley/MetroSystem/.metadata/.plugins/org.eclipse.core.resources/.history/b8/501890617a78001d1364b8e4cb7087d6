@@ -1,0 +1,31 @@
+package com.emily.service;
+
+import org.springframework.stereotype.Service;
+
+import com.emily.entity.Customer;
+
+@Service
+public class ClientServiceImpl implements ClientService {
+	
+	@Autowired
+	private RestTemplate restTemplate;
+
+	@Override
+	public Customer loginCheck(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	@Override
+	public Customer loginCheck(int id, String password) {
+		try {
+		Customer customer=customerDao.findUserByAccountIdAndCustomerPassword(id, password);
+		return customer;
+		}catch(Exception exception) {
+			return null;
+		}
+		
+		
+	}
+}

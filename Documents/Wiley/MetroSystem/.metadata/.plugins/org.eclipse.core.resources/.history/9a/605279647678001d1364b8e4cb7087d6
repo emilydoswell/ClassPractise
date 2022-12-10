@@ -1,0 +1,13 @@
+package com.emily.demo;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class MetroClientApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(MetroClientApplication.class, args);
+	}
+
+}
